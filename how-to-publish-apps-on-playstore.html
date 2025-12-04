@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Publish an App on the Google Play Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #4285f4;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #4285f4;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            color: #1a73e8;
+            flex-grow: 1;
+        }
+        
+        .status-badge {
+            background-color: #34a853;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            margin-left: 50px;
+        }
+        
+        .checklist {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34a853;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        
+        .code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+        
+        .important-note {
+            background-color: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        
+        .link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+        
+        .progress-container {
+            position: sticky;
+            top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4285f4, #34a853);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #5f6368;
+        }
+        
+        .toggle-details {
+            background: none;
+            border: none;
+            color: #5f6368;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .toggle-details:hover {
+            color: #1a73e8;
+        }
+        
+        .details-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #5f6368;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .step-content {
+                margin-left: 0;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .step-number {
+                margin-bottom: 10px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>How to Publish an App on the Google Play Store</h1>
+            <p>A comprehensive step-by-step guide to successfully launch your Android application on the world's largest app marketplace</p>
+        </header>
+        
+        <div class="progress-container">
+            <h3>Publishing Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span>Steps completed: <span id="completedSteps">0</span>/11</span>
+                <span id="progressPercent">0%</span>
+            </div>
+        </div>
+        
+        <div class="step-container">
+            <!-- Step 1 -->
+            <div class="step" id="step1">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">1</span>
+                        <span class="step-title">Prepare Your App for Release</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <p>Before uploading to Play Console, make sure your app is properly prepared:</p>
+                    <ul class="checklist">
+                        <li><strong>Use a release build:</strong> Build your APK/AAB in release mode. Use Android App Bundle (.aab) — Google requires AAB for new apps.</li>
+                        <li><strong>Sign your app:</strong> You must sign the app with a release keystore. In Android Studio: <span class="code">Build > Generate Signed Bundle / APK</span></li>
+                        <li><strong>Test thoroughly:</strong> Make sure there are no crashes, no logging of sensitive data, and performance is optimized.</li>
+                    </ul>
+                    <button class="toggle-details" data-target="details1">
+                        <i class="fas fa-chevron-down"></i> Additional Notes
+                    </button>
+                    <div class="details-content" id="details1">
+                        <div class="important-note">
+                            <p><strong>Note:</strong> Android App Bundle is the preferred publishing format. It allows Google Play to generate optimized APKs for each user's device configuration, resulting in smaller download sizes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="step" id="step2">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">2</span>
+                        <span class="step-title">Create a Google Play Developer Account</span>
+                    </div>
+                    <span class="status-badge">One-time</span>
+                </div>
+                <div class="step-content">
+                    <p>Go to: <a href="https://play.google.com/console" target="_blank" class="link">https://play.google.com/console</a></p>
+                    <p>You will need:</p>
+                    <ul class="checklist">
+                        <li>A Google account</li>
+                        <li>A one-time $25 USD registration fee</li>
+                        <li>Accept the Developer Distribution Agreement</li>
+                    </ul>
+                    <p>Once approved, you can access Play Console.</p>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="step" id="step3">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">3</span>
+                        <span class="step-title">Create a New Application</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <p>In the Play Console:</p>
+                    <ul class="checklist">
+                        <li>Go to <span class="code">All Apps</span></li>
+                        <li>Click <span class="code">Create App</span></li>
+                        <li>Choose:
+                            <ul>
+                                <li>App name</li>
+                                <li>Default language</li>
+                                <li>App type: App or Game</li>
+                                <li>Free or Paid</li>
+                            </ul>
+                        </li>
+                        <li>Declare that the app meets policies</li>
+                        <li>Click <span class="code">Create App</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="step" id="step4">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">4</span>
+                        <span class="step-title">Complete Store Listing</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <p>You must fill out:</p>
+                    <ul class="checklist">
+                        <li><strong>App Details:</strong> App Name, Short Description, Full Description</li>
+                        <li><strong>Graphics:</strong> Upload:
+                            <ul>
+                                <li>App icon (512×512)</li>
+                                <li>Feature graphic (1,024×500)</li>
+                                <li>Screenshots (phone/tablet, JPG or PNG)</li>
+                                <li>Optional promo video (YouTube URL)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Categorization:</strong> Category (e.g., Tools, Education, Games), Tags, Content rating questionnaire</li>
+                        <li><strong>Contact information:</strong> Email (required), Website (optional), Phone number (optional)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 5 -->
+            <div class="step" id="step5">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">5</span>
+                        <span class="step-title">App Content Requirements</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <p>Under App content, complete:</p>
+                    <ul class="checklist">
+                        <li>Privacy policy (must be a public URL)</li>
+                        <li>Ads declaration (whether your app uses ads)</li>
+                        <li>Target audience & age rating</li>
+                        <li>Data safety form</li>
+                        <li>Permissions usage (especially sensitive ones)</li>
+                        <li>Content rating questionnaire</li>
+                    </ul>
+                    <div class="warning">
+                        <p><strong>Important:</strong> The Data Safety section is required for all apps. You must accurately declare how your app collects, shares, and handles user data.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 6 -->
+            <div class="step" id="step6">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">6</span>
+                        <span class="step-title">Upload the App Bundle (.aab)</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <ul class="checklist">
+                        <li>Go to <span class="code">Production → Releases</span></li>
+                        <li>Click <span class="code">Create new release</span></li>
+                        <li>Upload your .aab file</li>
+                        <li>Add release notes (e.g., "Initial release")</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 7 -->
+            <div class="step" id="step7">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">7</span>
+                        <span class="step-title">Start Pre-Launch Testing (Optional but Recommended)</span>
+                    </div>
+                    <span class="status-badge">Recommended</span>
+                </div>
+                <div class="step-content">
+                    <p>Google allows different testing tracks:</p>
+                    <ul class="checklist">
+                        <li><strong>Internal testing:</strong> Up to 100 testers</li>
+                        <li><strong>Closed testing:</strong> Select groups</li>
+                        <li><strong>Open testing:</strong> Anyone with link</li>
+                    </ul>
+                    <p>This helps catch crashes before public release.</p>
+                </div>
+            </div>
+            
+            <!-- Step 8 -->
+            <div class="step" id="step8">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">8</span>
+                        <span class="step-title">Review Policy and Pricing Setup</span>
+                    </div>
+                    <span class="status-badge">Required</span>
+                </div>
+                <div class="step-content">
+                    <ul class="checklist">
+                        <li>Set pricing (free/paid)</li>
+                        <li>Set country availability</li>
+                        <li>Ensure no violations of:
+                            <ul>
+                                <li>User Data policy</li>
+                                <li>Safety policies</li>
+                                <li>Device & Network abuse</li>
+                                <li>Content restrictions</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 9 -->
+            <div class="step" id="step9">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">9</span>
+                        <span class="step-title">Publish the App</span>
+                    </div>
+                    <span class="status-badge">Final Step</span>
+                </div>
+                <div class="step-content">
+                    <p>Once everything is complete:</p>
+                    <ul class="checklist">
+                        <li>Go to <span class="code">Production → Releases</span></li>
+                        <li>Click <span class="code">Review Release</span></li>
+                        <li>Fix any warnings</li>
+                        <li>Click <span class="code">Start rollout to Production</span></li>
+                        <li>Confirm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 10 -->
+            <div class="step" id="step10">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">10</span>
+                        <span class="step-title">Google Review Process</span>
+                    </div>
+                    <span class="status-badge">Waiting Period</span>
+                </div>
+                <div class="step-content">
+                    <p>After submission:</p>
+                    <ul class="checklist">
+                        <li>Review typically takes hours to a few days</li>
+                        <li>First-time developers may take longer (24–7 days)</li>
+                        <li>You will get an email notification when approved or if changes are required</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 11 -->
+            <div class="step" id="step11">
+                <div class="step-header">
+                    <div>
+                        <span class="step-number">11</span>
+                        <span class="step-title">After Publishing</span>
+                    </div>
+                    <span class="status-badge">Monitoring</span>
+                </div>
+                <div class="step-content">
+                    <p>You can monitor:</p>
+                    <ul class="checklist">
+                        <li>App statistics</li>
+                        <li>Crashes (via Play Console or Firebase Crashlytics)</li>
+                        <li>User reviews</li>
+                        <li>Android Vitals</li>
+                        <li>Store performance metrics</li>
+                    </ul>
+                    <p>You can release updates anytime by uploading a new version.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Google Play Store Publishing Guide | This guide is for informational purposes only. Refer to the official Google Play Developer documentation for the most current requirements.</p>
+            <p style="margin-top: 10px;">© 2023 App Publishing Guide | Icons by FontAwesome</p>
+        </footer>
+    </div>
+
+    <script>
+        // Track step completion
+        const steps = document.querySelectorAll('.step');
+        const progressFill = document.getElementById('progressFill');
+        const completedStepsElement = document.getElementById('completedSteps');
+        const progressPercentElement = document.getElementById('progressPercent');
+        
+        // Function to update progress
+        function updateProgress() {
+            const checkedSteps = document.querySelectorAll('.step.checked').length;
+            const totalSteps = steps.length;
+            const percentage = Math.round((checkedSteps / totalSteps) * 100);
+            
+            progressFill.style.width = `${percentage}%`;
+            completedStepsElement.textContent = checkedSteps;
+            progressPercentElement.textContent = `${percentage}%`;
+        }
+        
+        // Toggle step completion on click
+        steps.forEach(step => {
+            step.addEventListener('click', function(e) {
+                // Don't toggle if the click was on a button or link
+                if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                    return;
+                }
+                
+                this.classList.toggle('checked');
+                updateProgress();
+                
+                // If step is checked, add a visual indicator
+                if (this.classList.contains('checked')) {
+                    this.style.borderLeftColor = '#34a853';
+                    this.style.boxShadow = '0 3px 10px rgba(52, 168, 83, 0.2)';
+                } else {
+                    this.style.borderLeftColor = '#4285f4';
+                    this.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.08)';
+                }
+            });
+        });
+        
+        // Toggle details functionality
+        const toggleButtons = document.querySelectorAll('.toggle-details');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                
+                if (targetElement.style.display === 'block') {
+                    targetElement.style.display = 'none';
+                    icon.className = 'fas fa-chevron-down';
+                } else {
+                    targetElement.style.display = 'block';
+                    icon.className = 'fas fa-chevron-up';
+                }
+            });
+        });
+        
+        // Initialize progress bar
+        updateProgress();
+        
+        // Mark first step as completed by default
+        document.getElementById('step1').classList.add('checked');
+        document.getElementById('step1').style.borderLeftColor = '#34a853';
+        document.getElementById('step1').style.boxShadow = '0 3px 10px rgba(52, 168, 83, 0.2)';
+        updateProgress();
+    </script>
+</body>
+</html>
