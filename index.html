@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Development Guides</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .guide-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+        
+        .card-category {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .card-description {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .card-link {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #1a73e8;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .card-link:hover {
+            background-color: #0d62d9;
+        }
+        
+        .future-guides {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            margin-top: 40px;
+        }
+        
+        .future-guides h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .future-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .future-item {
+            background-color: #f8f9fa;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: #666;
+            font-size: 0.95rem;
+            border-left: 4px solid #ccc;
+        }
+        
+        .placeholder {
+            font-style: italic;
+            color: #888;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        .last-updated {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Android Development Guides</h1>
+        <p class="subtitle">A collection of practical guides for Android app development, security, and publishing. Bookmark for quick reference and notes.</p>
+    </header>
+    
+    <div class="main-content">
+        <!-- Security Guide -->
+        <div class="guide-card">
+            <div class="card-header">
+                <h2 class="card-title">Android Keystore Security Guide</h2>
+                <span class="card-category">Security</span>
+            </div>
+            <div class="card-body">
+                <p class="card-description">Learn how to securely store cryptographic keys in the Android Keystore system. This guide covers key generation, storage, and usage to protect sensitive data in your Android applications.</p>
+                <a href="https://apdg21.github.io/guides/android-keystore-security-guide.html" class="card-link" target="_blank">View Guide</a>
+            </div>
+        </div>
+        
+        <!-- Build Guide -->
+        <div class="guide-card">
+            <div class="card-header">
+                <h2 class="card-title">Creating Signed APK/AAB for Play Store</h2>
+                <span class="card-category">Build & Distribution</span>
+            </div>
+            <div class="card-body">
+                <p class="card-description">Step-by-step instructions for generating signed APK and Android App Bundle (AAB) files ready for Google Play Store submission. Includes keystore management and signing configuration.</p>
+                <a href="https://apdg21.github.io/guides/creating-signed-apk-aab-for-playstore.html" class="card-link" target="_blank">View Guide</a>
+            </div>
+        </div>
+        
+        <!-- Publishing Guide -->
+        <div class="guide-card">
+            <div class="card-header">
+                <h2 class="card-title">How to Publish Apps on Play Store</h2>
+                <span class="card-category">Publishing</span>
+            </div>
+            <div class="card-body">
+                <p class="card-description">Complete walkthrough of the Google Play Console publishing process. From creating a developer account to preparing store listing, pricing, and releasing your app to users.</p>
+                <a href="https://apdg21.github.io/guides/how-to-publish-apps-on-playstore.html" class="card-link" target="_blank">View Guide</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="future-guides">
+        <h2>Future Guides (Coming Soon)</h2>
+        <p>I'll be creating additional guides for tasks that are worth documenting for future reference. Here are some potential topics:</p>
+        <div class="future-list">
+            <div class="future-item">Implementing Google Sign-In in Android</div>
+            <div class="future-item">Firebase Integration for Android Apps</div>
+            <div class="future-item">Android App Performance Optimization</div>
+            <div class="future-item">Proguard/R8 Configuration Guide</div>
+            <div class="future-item">In-App Purchase Implementation</div>
+            <div class="future-item">Android Jetpack Components Deep Dive</div>
+            <div class="future-item">CI/CD for Android with GitHub Actions</div>
+            <div class="future-item">Localization and Internationalization</div>
+            <div class="future-item placeholder">More to come as I encounter new tasks...</div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Android Development Guides • Created for personal reference and shared knowledge</p>
+        <p class="last-updated">Last updated: <span id="current-date"></span></p>
+    </footer>
+
+    <script>
+        // Set current date in footer
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+        
+        // Simple animation for cards on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.guide-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
